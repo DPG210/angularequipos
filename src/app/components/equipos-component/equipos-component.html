@@ -1,0 +1,77 @@
+<div class="container mt-4">
+
+    @if (cargando) {
+    <div class="d-flex justify-content-center p-5">
+        <div>
+            <img src="./../../../../assets/images/mifoto.jfif">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+    }
+
+    @if (!cargando && datosEquipo) {
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <h3>Equipo</h3>
+
+            <div class="card shadow-sm sticky-top" style="top: 80px;">
+                <img [src]="datosEquipo.equipo.imagen" class="card-img-top" [alt]="datosEquipo.equipo.nombre">
+
+                <div class="card-body">
+                    <h4 class="card-title">{{ datosEquipo.equipo.nombre }}</h4>
+
+                    <p class="card-text">{{ datosEquipo.equipo.descripcion }}</p>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Champions:</strong>
+                        <span>{{ datosEquipo.equipo.champions }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <a [href]="datosEquipo.equipo.web" class="btn btn-outline-primary w-100" target="_blank"
+                            rel="noopener noreferrer">
+                            Sitio Web
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+
+            <h3>Plantilla</h3>
+
+            @if (datosEquipo.jugadores && datosEquipo.jugadores.length > 0) {
+
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+                @for (jugador of datosEquipo.jugadores; track jugador) {
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm text-center">
+                        <img [src]="jugador.imagen" class="card-img-top" [alt]="jugador.nombre"
+                            style="height: 180px; object-fit: cover;">
+
+                        <div class="card-body p-2">
+                            <h6 class="card-title mb-0">
+                                {{ jugador.nombre }}
+                            </h6>
+                            <small class="text-muted">{{ jugador.posicion }}</small>
+                        </div>
+                    </div>
+                </div>
+
+                }
+            </div> } @else {
+            <div class="alert alert-info">
+                No se encontraron jugadores para este equipo.
+            </div>
+            }
+        </div>
+    </div>
+    }
+</div>
