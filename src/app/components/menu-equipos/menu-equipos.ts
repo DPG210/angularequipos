@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule,Router } from '@angular/router';
 import { ServiceFutbol } from '../../services/service.futbol';
 import { Equipo } from '../../models/equipo';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,10 @@ import { FormsModule } from '@angular/forms';
 export class MenuEquipos implements OnInit {
   public equipos!: Array<Equipo>;
 
-  constructor(private _service: ServiceFutbol) {
+  constructor(
+    private _service: ServiceFutbol,
+    private _router:Router
+  ) {
     this.equipos = [];
   }
 
@@ -23,4 +26,9 @@ export class MenuEquipos implements OnInit {
       this.equipos = response;
     })
   }
+
+  buscarJugador():void{
+    this._router.navigate("['detalles',]")
+  }
+
 }

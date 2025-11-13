@@ -27,4 +27,10 @@ export class ServiceFutbol {
         let url = environment.urlApiEjemplos + request;
         return this._http.get<Array<Equipo>>(url);
     }
+
+    getJugador(nombre: string): Observable<Jugador> {
+        let request = "api/jugadores/buscarjugadores/" + nombre;
+        let url = environment.urlApiEjemplos + request;
+        return this._http.get<Jugador>(url);
+    }
 }
