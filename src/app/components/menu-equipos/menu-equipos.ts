@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ServiceFutbol } from '../../services/service.futbol';
 import { Equipo } from '../../models/equipo';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-menu-equipos',
-  imports: [RouterModule],
+  imports: [RouterModule, FormsModule],
   templateUrl: './menu-equipos.html',
   styleUrl: './menu-equipos.css',
 })
