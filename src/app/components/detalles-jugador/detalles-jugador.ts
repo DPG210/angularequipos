@@ -10,19 +10,19 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './detalles-jugador.html',
   styleUrl: './detalles-jugador.css',
 })
-export class DetallesJugador implements OnInit{
-  public jugadores!:Jugador;
+export class DetallesJugador implements OnInit {
+  public jugadores!: Array<Jugador>;
 
   constructor(
-    private _service:ServiceFutbol,
-    private _activateRoute:ActivatedRoute
-  ){}
+    private _service: ServiceFutbol,
+    private _activateRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this._activateRoute.params.subscribe((param:Params)=>{
-      let nombre= param["nombre"];
-      this._service.getJugador(nombre).subscribe(response=>{
-        this.jugadores=response;
+    this._activateRoute.params.subscribe((param: Params) => {
+      let nombre = param["nombre"];
+      this._service.getJugador(nombre).subscribe(response => {
+        this.jugadores = response;
       })
     })
   }

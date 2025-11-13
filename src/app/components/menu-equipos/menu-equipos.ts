@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { RouterModule,Router } from '@angular/router';
 import { ServiceFutbol } from '../../services/service.futbol';
 import { Equipo } from '../../models/equipo';
@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class MenuEquipos implements OnInit {
   public equipos!: Array<Equipo>;
+  @ViewChild ("cajabuscador") cajaBuscador!:ElementRef;
 
   constructor(
     private _service: ServiceFutbol,
@@ -28,7 +29,8 @@ export class MenuEquipos implements OnInit {
   }
 
   buscarJugador():void{
-    this._router.navigate("['detalles',]")
+    let nombre= this.cajaBuscador.nativeElement.value;
+    this._router.navigate(['detalles',nombre]);
   }
 
 }
